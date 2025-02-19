@@ -40,10 +40,12 @@ pipeline {
     }
 
     post {
+        /*
         always {
             junit 'src/test-results/junit.xml'
         }
-    }   
+    }  
+    */ 
     
 }
         
