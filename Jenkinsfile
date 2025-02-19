@@ -40,17 +40,10 @@ pipeline {
     }
 
     post {
-        /*
-        success {
-            echo "Build success"
-        }
-        failure {
-            echo "Build failed"
-        }
         always {
             junit 'src/test-results/junit.xml'
         }
     }   
-    */
+    
 }
         
