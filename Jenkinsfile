@@ -20,7 +20,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Test') {
             agent {
                 docker {
@@ -40,7 +40,7 @@ pipeline {
     
     post {
         always {
-            junit 'src/test-results/junit.xml'
+            junit 'test-results/junit.xml'
         }
     }  
     
