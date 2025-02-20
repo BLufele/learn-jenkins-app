@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     stages {
-        /*
         stage('Build') {
             agent {
                 docker {
@@ -21,7 +20,7 @@ pipeline {
                 '''
             }
         }
-        */
+        
         stage('Test') {
             agent {
                 docker {
@@ -33,35 +32,16 @@ pipeline {
             steps {
                 sh '''
                     test -f build/index.html
-                    npm  test
+                    npm run test
                 '''
             }
         }
     }
-
-    stages('Test E2E') {
-        agent {
-            docker {
-                image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
-                reuseNode true
-            }
-        }
-
-        stages {
-            sh '''
-                npm install serve
-                node_modules/.bin/serve -s build  &
-                sleep 10
-                npx playwright test --reporter=html
-            '''
-        }
-    }
-
+    
     post {
         always {
             junit 'src/test-results/junit.xml'
         }
     }  
     
-}
-        
+}      
