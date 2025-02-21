@@ -15,6 +15,7 @@ pipeline {
                     node --version
                     npm --version
 		            npm config set strict-ssl false
+                    npm instal
                     npm ci
                     npm run build
                     ls -la
